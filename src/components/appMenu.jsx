@@ -25,6 +25,7 @@ class appMenu extends Component{
         if(item.parent){arr.push(item.parent);}
         arr.push(item.title)
         this.props.setCrumb(arr);
+        //this.props.
     }
     render(){
         return(
