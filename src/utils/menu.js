@@ -1,0 +1,35 @@
+export const menuItem = [
+    {
+        id:1,
+        title:'首页',
+        icon:'desktop',
+        child:[]
+    },
+    {
+        id:2,
+        title:'测试2',
+        icon:'team',
+        child:[
+            {
+                id:'2-1',
+                title:'测试2-1'
+            },
+            {
+                id:'2-2',
+                title:'测试2-2'
+            }
+        ]
+    },
+    {
+        id:3,
+        title:'测试3',
+        icon:'user',
+        child:[]
+    },
+    {
+        id:4,
+        title:'测试4',
+        icon:'team',
+        child:[]
+    }
+];
