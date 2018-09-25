@@ -1,34 +1,35 @@
 export const menuItem = [
     {
-        id:1,
+        id:'/app/home',
         title:'首页',
         icon:'desktop',
         child:[]
     },
     {
-        id:2,
-        title:'测试2',
+        id:'/app/order/',
+        title:'order',
         icon:'team',
         child:[
             {
-                id:'2-1',
+                id:'/app/order/list1',
                 title:'测试2-1'
             },
             {
-                id:'2-2',
+                id:'/app/order/list2',
                 title:'测试2-2'
             }
         ]
     },
     {
-        id:3,
-        title:'测试3',
+        id:'/app/home/list',
+        title:'list',
         icon:'user',
+        src:'/app/home/list',
         child:[]
     },
     {
-        id:4,
-        title:'测试4',
+        id:'/app/home/config',
+        title:'config',
         icon:'team',
         child:[]
     }

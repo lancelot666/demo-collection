@@ -18,7 +18,7 @@ class appMenu extends Component{
         console.log(collapsed);
         this.setState({ collapsed });
     }
-    openSonItem(e){
+    openSonItem(e){ //点击菜单栏
         console.log(e)
         let item = e.item.props;
         let arr =[];
@@ -34,7 +34,7 @@ class appMenu extends Component{
             onCollapse={this.onCollapse}
           >
             <div className={style.logo} />
-            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+            <Menu theme="dark" defaultSelectedKeys={[menuItem[0].id]} mode="inline">
               {menuItem.map((item)=>{
                 if(item.child&&item.child.length>1){
                   return(

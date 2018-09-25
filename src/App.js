@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import {Switch,Route,Redirect} from 'react-router-dom';
 import * as style from './App.less';
 import {connect} from 'react-redux';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Breadcrumb} from 'antd';
 import {menuItem} from './utils/menu';
 import * as app from './redux/actions/appAction';
-//import AppMenu from './components/appMenu';
+import AppMenu from './components/appMenu';
+import Home from './view/home/home';
+import List from './view/list/list';
 
-const { Header, Content, Footer, Sider } = Layout;
-const SubMenu = Menu.SubMenu;
+const { Header, Content, Footer } = Layout;
+//const { Header, Content, Footer, Sider } = Layout;
+//const SubMenu = Menu.SubMenu;
 
 class App extends Component {
   constructor(props){
@@ -31,41 +35,11 @@ class App extends Component {
     this.props.setCrumb(arr);
   }
   render() {
+    const match=this.props.match;
     return (
       <div className={style.app}>
         <Layout style={{ minHeight: '100vh' }}>
-          {/* <AppMenu></AppMenu> */}
-          <Sider
-            collapsible
-            collapsed={this.state.collapsed}
-            onCollapse={this.onCollapse}
-          >
-            <div className={style.logo} />
-            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-              {menuItem.map((item)=>{
-                if(item.child&&item.child.length>1){
-                  return(
-                    <SubMenu
-                      key={item.id}
-                      title={<span><Icon type={item.icon} /><span>{item.title}</span></span>}
-                    >
-                      {item.child.map((sonItem)=>{
-                        return(
-                          <Menu.Item onClick={this.openSonItem.bind(this)} title={sonItem.title} parent={item.title} key={sonItem.id}>{sonItem.title}</Menu.Item>
-                        )
-                      })}
-                    </SubMenu>
-                  )
-                }
-                return(
-                  <Menu.Item key={item.id} title={item.title} onClick={this.openSonItem.bind(this)}>
-                    <Icon type={item.icon} />
-                    <span>{item.title}</span>
-                  </Menu.Item>
-                )
-              })}
-            </Menu>
-          </Sider>
+          <AppMenu></AppMenu>
           <Layout>
             <Header style={{ background: '#fff', padding: 0 }} />
             <Content style={{ margin: '0 16px' }}>
@@ -81,7 +55,11 @@ class App extends Component {
                 }
               </Breadcrumb>
               <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-                Bill is a cat.
+                <Switch>
+                  <Redirect exact from={`${match.url}`} to={`${match.url}/home`}/>
+                  <Route exact match='match' path={`${match.url}/home`} component={Home} />
+                  <Route match='match' path={`${match.url}/list`} component={List} />
+                </Switch>
               </div>
             </Content>
             <Footer style={{ textAlign: 'center' }}>
