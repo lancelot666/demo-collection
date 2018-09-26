@@ -8,8 +8,6 @@ export const appData = (state=defaultState,action={})=>{
     switch(action.type){
         case app.SETCRUMB:
             return {...state,...{crumb:action.newArray}}
-        // case app.SETROUTEKEY:
-        //     return {...state,...{routeKey:action.newKey}}
         default:
             return state;
     }

@@ -29,7 +29,7 @@ class appMenu extends Component{
             let res2 = item.child.filter((sonItem)=>{
               return sonItem.id === url;
             });
-            if(res2.length){
+            if(res2.length){  //二层遍历获得时组装入数组
               return arr.push(item.title,res2[0].title);
             }
           }

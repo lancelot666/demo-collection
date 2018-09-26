@@ -11,24 +11,24 @@ export const menuItem = [
         icon:'team',
         child:[
             {
-                id:'/app/test/list1',
+                id:'/app/test/test1',
                 title:'测试1'
             },
             {
-                id:'/app/test/list2',
+                id:'/app/test/test2',
                 title:'测试2'
             }
         ]
     },
     {
-        id:'/app/home/list',
+        id:'/app/list',
         title:'list',
         icon:'user',
-        src:'/app/home/list',
+        src:'/app/list',
         child:[]
     },
     {
-        id:'/app/home/config',
+        id:'/app/config',
         title:'config',
         icon:'team',
         child:[]

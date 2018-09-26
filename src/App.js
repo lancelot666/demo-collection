@@ -9,6 +9,7 @@ import Crumb from './components/crumb';
 import Home from './view/home/home';
 import List from './view/list/list';
 import NotFound from './view/404/404';
+import Test1 from './view/test/test1';
 
 const { Header, Content, Footer } = Layout;
 
@@ -35,7 +36,8 @@ class App extends Component {
                 <Switch>
                   <Redirect exact from={`${match.url}`} to={`${match.url}/home`}/>
                   <Route exact match='match' path={`${match.url}/home`} component={Home} />
-                  <Route exact match='match' path={`${match.url}/home/list`} component={List} />
+                  <Route exact match='match' path={`${match.url}/list`} component={List} />
+                  <Route exact match='match' path={`${match.url}/test/test1`} component={Test1} />
                   <Route component={NotFound} />
                 </Switch>
               </div>
