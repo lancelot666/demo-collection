@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {Breadcrumb} from 'antd';
+import {menuItem} from '../utils/menu';
 class Crumb extends Component{
-    constructor(props){
-        super(props);
-        console.log('面包屑组件Init')
-    }
     render(){
         return(
             <Breadcrumb style={{ margin: '16px 0' }}>
@@ -20,4 +19,9 @@ class Crumb extends Component{
         )
     }
 }
-export default Crumb;
+const mapState = (state)=>{
+    return {
+        appData:state.appData//对应本组件props需要的属性products
+    }
+}
+export default connect(mapState)(Crumb);

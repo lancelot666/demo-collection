@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {Switch,Route,Redirect} from 'react-router-dom';
 import * as style from './App.less';
 import {connect} from 'react-redux';
-import { Layout, Breadcrumb} from 'antd';
-import {menuItem} from './utils/menu';
+import { Layout} from 'antd';
 import * as app from './redux/actions/appAction';
 import AppMenu from './components/appMenu';
+import Crumb from './components/crumb';
 import Home from './view/home/home';
 import List from './view/list/list';
 import NotFound from './view/404/404';
@@ -30,17 +30,7 @@ class App extends Component {
           <Layout>
             <Header style={{ background: '#fff', padding: 0 }} />
             <Content style={{ margin: '0 16px' }}>
-              <Breadcrumb style={{ margin: '16px 0' }}>
-                {
-                  this.props.appData.crumb.length>0?
-                  this.props.appData.crumb.map((item,index)=>{
-                    return(
-                      <Breadcrumb.Item key={index}>{item}</Breadcrumb.Item>
-                    )
-                  })
-                  :<Breadcrumb.Item key={menuItem[0].id}>{menuItem[0].title}</Breadcrumb.Item> 
-                }
-              </Breadcrumb>
+              <Crumb></Crumb>
               <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
                 <Switch>
                   <Redirect exact from={`${match.url}`} to={`${match.url}/home`}/>
@@ -68,7 +58,6 @@ const mapState = (state)=>{
 const mapDsipatch=(dispatch)=>{
   return{
     setCrumb:(val)=>dispatch(app.SETCRUMB(val)),
-    // setRouteKey:(val)=>dispatch(app.SETROUTEKEY(val))
   }
 }
 export default connect(mapState,mapDsipatch)(App);

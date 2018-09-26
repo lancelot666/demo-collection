@@ -6,17 +6,17 @@ export const menuItem = [
         child:[]
     },
     {
-        id:'/app/order/',
-        title:'order',
+        id:'/app/test/',
+        title:'测试',
         icon:'team',
         child:[
             {
-                id:'/app/order/list1',
-                title:'测试2-1'
+                id:'/app/test/list1',
+                title:'测试1'
             },
             {
-                id:'/app/order/list2',
-                title:'测试2-2'
+                id:'/app/test/list2',
+                title:'测试2'
             }
         ]
     },
