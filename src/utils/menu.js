@@ -1,7 +1,7 @@
 export const menuItem = [
     {
         id:'/app/home',
-        title:'首页',
+        title:'面板',
         icon:'desktop',
         child:[]
     },

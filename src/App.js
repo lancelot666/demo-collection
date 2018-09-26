@@ -8,38 +8,25 @@ import * as app from './redux/actions/appAction';
 import AppMenu from './components/appMenu';
 import Home from './view/home/home';
 import List from './view/list/list';
+import NotFound from './view/404/404';
 
 const { Header, Content, Footer } = Layout;
-//const { Header, Content, Footer, Sider } = Layout;
-//const SubMenu = Menu.SubMenu;
 
 class App extends Component {
   constructor(props){
     super(props);
     console.log('app init...')
     this.state = {
-      collapsed: false,
     };
-    console.log(this.props)
   }
-  onCollapse = (collapsed) => { //侧面栏收缩
-    console.log(collapsed);
-    this.setState({ collapsed });
-  }
-  openSonItem(e){
-    console.log(e)
-    let item = e.item.props;
-    let arr =[];
-    if(item.parent){arr.push(item.parent);}
-    arr.push(item.title)
-    this.props.setCrumb(arr);
+  componentDidMount(){
   }
   render() {
     const match=this.props.match;
     return (
       <div className={style.app}>
         <Layout style={{ minHeight: '100vh' }}>
-          <AppMenu></AppMenu>
+          <AppMenu url={this.props.location.pathname}></AppMenu>
           <Layout>
             <Header style={{ background: '#fff', padding: 0 }} />
             <Content style={{ margin: '0 16px' }}>
@@ -58,7 +45,8 @@ class App extends Component {
                 <Switch>
                   <Redirect exact from={`${match.url}`} to={`${match.url}/home`}/>
                   <Route exact match='match' path={`${match.url}/home`} component={Home} />
-                  <Route match='match' path={`${match.url}/list`} component={List} />
+                  <Route exact match='match' path={`${match.url}/home/list`} component={List} />
+                  <Route component={NotFound} />
                 </Switch>
               </div>
             </Content>
@@ -71,15 +59,16 @@ class App extends Component {
     );
   }
 }
-function mapState(state) {
+const mapState = (state)=>{
   //console.log(state)
   return {
       appData:state.appData//对应本组件props需要的属性products
   }
 }
-function mapDsipatch(dispatch){
+const mapDsipatch=(dispatch)=>{
   return{
-    setCrumb:(val)=>dispatch(app.SETCRUMB(val))
+    setCrumb:(val)=>dispatch(app.SETCRUMB(val)),
+    // setRouteKey:(val)=>dispatch(app.SETROUTEKEY(val))
   }
 }
 export default connect(mapState,mapDsipatch)(App);

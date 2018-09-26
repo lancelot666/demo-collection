@@ -14,7 +14,7 @@ ReactDOM.render(
         <BrowserRouter>
 			<Switch>
 				<Route match='match' path="/app" component={App} />
-				<Route path="/login" component={Login} />
+				<Route exact path="/login" component={Login} />
 				<Redirect exact from='/' to='/app'/>
 				<Route component={NotFound} />	 
 			</Switch>
